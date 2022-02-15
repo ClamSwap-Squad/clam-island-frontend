@@ -158,17 +158,18 @@ const Map3D = ({ isGuidedTourPassed, setIsGuidedTourPassed }) => {
     scene.add(hemiLight);
   };
 
-  const getOutlineMesh = (name) => {
+  const getValentineMeshes = (name) => {
     const mesh = modelObjs.current.find(k => k.name === name).model;
-    return mesh.children.filter((el) => el.name === name);
-  };
+
+    return mesh.children;
+  }
 
   const setOutlineMeshes = () => {
-    lighthouseOutlineMeshes = getOutlineMesh(ISLANDS_NAMES.lighthouse);
-    farmOutlineMeshes = getOutlineMesh(ISLANDS_NAMES.farm);
-    vaultOutlineMeshes = getOutlineMesh(ISLANDS_NAMES.vault);
-    marketOutlineMeshes = getOutlineMesh(ISLANDS_NAMES.market);
-    bankOutlineMeshes = getOutlineMesh(ISLANDS_NAMES.bank);
+    lighthouseOutlineMeshes = getValentineMeshes(ISLANDS_NAMES.lighthouse);
+    farmOutlineMeshes = getValentineMeshes(ISLANDS_NAMES.farm);
+    vaultOutlineMeshes = getValentineMeshes(ISLANDS_NAMES.vault);
+    marketOutlineMeshes = getValentineMeshes(ISLANDS_NAMES.market);
+    bankOutlineMeshes = getValentineMeshes(ISLANDS_NAMES.bank);
 
     outlineMeshes = [
       ...lighthouseOutlineMeshes,
@@ -270,8 +271,9 @@ const Map3D = ({ isGuidedTourPassed, setIsGuidedTourPassed }) => {
   const checkIntersection = () => {
     raycaster.setFromCamera(mouse, camera);
     const intersect = raycaster.intersectObjects(outlineMeshes, true)[0];
+
     if (intersect) {
-      const interParent = intersect.object.parent.name;
+      const interParent = intersect.object.parent.parent.name;
       const currentHover = hoverStr;
       switch (interParent) {
         case ISLANDS_NAMES.lighthouse: {

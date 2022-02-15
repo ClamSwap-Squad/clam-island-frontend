@@ -8,7 +8,14 @@ export const ISLANDS_NAMES = {
 
 export const ISLAND_OBJECTS = [
   {
-    objectUrl: "glb_files/Bank_Island_draco.glb",
+    objectUrl: "glb_files/Bank_valentines_island.glb",
+    type: "island",
+    name: `${ISLANDS_NAMES.bank}_island`,
+    buoyancy: { factor: 2, init: -5 },
+    clickable: false,
+  },
+  {
+    objectUrl: "glb_files/Bank_valentines_building.glb",
     type: "island",
     name: ISLANDS_NAMES.bank,
     clickable: true,
@@ -16,14 +23,20 @@ export const ISLAND_OBJECTS = [
     buoyancy: { factor: 2, init: -5 }
   },
   {
-    objectUrl: "glb_files/farm_island_draco.glb",
+    objectUrl: "glb_files/Farm_valentines_building.glb",
     type: "island",
     name: ISLANDS_NAMES.farm,
     clickable: true,
     url: "/farms",
   },
   {
-    objectUrl: "glb_files/Market_Island_draco.glb",
+    objectUrl: "glb_files/Farm_valentines_island.glb",
+    type: "island",
+    name: `${ISLANDS_NAMES.farm}_island`,
+    clickable: false,
+  },
+  {
+    objectUrl: "glb_files/Market_valentines_building.glb",
     type: "island",
     name: ISLANDS_NAMES.market,
     clickable: true,
@@ -31,7 +44,14 @@ export const ISLAND_OBJECTS = [
     buoyancy: { factor: 2, init: 2 }
   },
   {
-    objectUrl: "glb_files/Vault_Island_draco.glb",
+    objectUrl: "glb_files/Market_valentines_island.glb",
+    type: "island",
+    name: `${ISLANDS_NAMES.market}_island`,
+    clickable: false,
+    buoyancy: { factor: 2, init: 2 }
+  },
+  {
+    objectUrl: "glb_files/Vault_valentines_building.glb",
     type: "island",
     name: ISLANDS_NAMES.vault,
     clickable: true,
@@ -39,11 +59,25 @@ export const ISLAND_OBJECTS = [
     buoyancy: { factor: 2, init: -4 }
   },
   {
-    objectUrl: "glb_files/Info_Island_draco.glb",
+    objectUrl: "glb_files/Vault_valentines_island.glb",
+    type: "island",
+    name: `${ISLANDS_NAMES.vault}_island`,
+    clickable: false,
+    buoyancy: { factor: 2, init: -4 }
+  },
+  {
+    objectUrl: "glb_files/Info_valentines_building.glb",
     type: "island",
     name: ISLANDS_NAMES.lighthouse,
     clickable: true,
     url: "/info",
+    buoyancy: { factor: 2, init: 2 }
+  },
+  {
+    objectUrl: "glb_files/Info_valentines_island.glb",
+    type: "island",
+    name: ISLANDS_NAMES.lighthouse,
+    clickable: false,
     buoyancy: { factor: 2, init: 2 }
   },
   {
