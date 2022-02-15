@@ -12,6 +12,7 @@ import poolAssets from "../views/bank/poolsAssets";
 import { getUsdValueOfPair, getUsdPriceOfToken } from "./pancakeRouter";
 import { getGemPrice } from "./gemOracle";
 import { totalSupply } from "./bep20";
+import {exchangeUrl, getBalancesFormatted} from "../views/bank/utils";
 
 const bank = () =>
   contractFactory({
@@ -327,11 +328,21 @@ export const getAllPools = async ({ address }) => {
       .filter((p) => p)
       .map(async (pool) => {
         const [apr, tvl, tokenPrice] = await calculateAPRandTVL(pool);
+        let balances;
+        if (address) {
+          balances = await getBalancesFormatted(address, pool.lpToken, pool.isSingleStake);
+        }
+        const url = await exchangeUrl({
+          tokenAddress: pool.lpToken,
+          isSingleStake: pool.isSingleStake,
+        });
         return {
           ...pool,
           apr,
           tvl,
           tokenPrice,
+          balances,
+          exchangeUrl: url,
         };
       })
   );

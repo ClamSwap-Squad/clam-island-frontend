@@ -10,7 +10,7 @@ export const Exchange = () => (
       <br />
       Coming Soon!
     </div>
-    <div className="flex flex-col items-center mt-24">
+    <div id="ExchangeLinksBlock" className="flex flex-col items-center mt-24">
       <a
         className="btn btn-secondary drop-shadow-button w-[200px]"
         href="https://app.bogged.finance/swap?tokenIn=BNB&tokenOut=0x9fb4DEF63f8caEC83Cb3EBcC22Ba0795258C988a"

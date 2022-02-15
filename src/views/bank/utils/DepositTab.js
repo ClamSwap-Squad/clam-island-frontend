@@ -163,6 +163,7 @@ const DepositTab = ({
         </div>
         <div data-tip={CONNECT_WALLET_TIP} className={!address ? "tooltip" : ""}>
           <ActionButton
+            id="DepositGemButton"
             style="btn-secondary w-full"
             isDisabled={!isValid || inTx || !address}
             isLoading={inTx}

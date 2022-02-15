@@ -114,7 +114,7 @@ const Navbar = ({
 
       <nav className="flex min-h-48 min-w-full justify-end fixed px-6 py-4 bg-transparent mt-2 z-20">
         <div className="w-full lg:flex lg:items-center lg:w-auto lg:px-3 px-8">
-          <div className="flex">
+          <div id="NavInfoBlock" className="flex">
             {address && (
               <>
                 <div className="flex lg:mt-0 px-4 py-2 mr-2 rounded-xl shadow bg-gray-600 bg-opacity-80">

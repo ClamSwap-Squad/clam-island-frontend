@@ -282,6 +282,7 @@ const Web3ProvidersModal = ({
           <div className="w-full lg:flex lg:items-center lg:w-auto lg:px-3 px-8">
             <div className="flex">
               <button
+                id="connectWalletButton"
                 type="button"
                 className="focus:outline-none block text-md px-4 ml-2 py-2 rounded-xl bg-gray-800 text-white font-bold hover:text-white hover:bg-gray-700"
                 onClick={onConnect}

@@ -32,7 +32,7 @@ const PoolDepositWithdraw = ({ depositFee, disabled }) => {
     <div className="w-full" style={{ padding: "0 2%" }}>
       <div data-tip={CONNECT_WALLET_TIP} className={disabled ? "tooltip" : ""}>
         <div className="flex flex-row justify-between h-1/5">
-          <StateButton isActive={tab === 0} onClick={() => handleSelect(0)}>
+          <StateButton id="PoolDepositTab" isActive={tab === 0} onClick={() => handleSelect(0)}>
             Deposit
           </StateButton>
           <StateButton isActive={tab === 1} onClick={() => handleSelect(1)}>

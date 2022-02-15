@@ -124,7 +124,12 @@ const PoolHarvest = ({
           <p className="font-aristotelica-bold text-xl">Harvest Rewards</p>
           {isNativePool && (
             <div data-tip={CONNECT_WALLET_TIP} className={!address ? "tooltip" : ""}>
-              <button className="btn btn-info" onClick={toggleModal} disabled={!address}>
+              <button
+                id="PoolBoostRewardsButton"
+                className="btn btn-info"
+                onClick={toggleModal}
+                disabled={!address}
+              >
                 Boost Rewards
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -144,7 +149,7 @@ const PoolHarvest = ({
             </div>
           )}
         </div>
-        <div className="flex justify-center">
+        <div id="HarvestRewardsInfo" className="flex justify-center">
           <div className="flex items-start">
             <div className="avatar -mt-1">
               <div className="rounded-full w-12 h-12">
@@ -239,6 +244,7 @@ const PoolHarvest = ({
 
         <div className="dropdown dropdown-top dropdown-end dropdown-hover">
           <ActionButton
+            id="PoolHarvestButton"
             onClick={handleHarvest}
             style="btn-secondary w-full"
             isDisabled={inTx || !address}

@@ -14,3 +14,5 @@ export const HOME_ICONS = [
   { src: "label_vaultclams.png", url: "/vault", location: [230, 800] },
   { src: "label_buyclams.png", url: "/bank", location: [1050, 500] },
 ];
+
+export const BANK_TOUR_STORAGE_KEY = "bankTourInfo";

@@ -22,7 +22,11 @@ export const TokenExchange = () => {
 
   return (
     <>
-      <button className="btn btn-secondary drop-shadow-button" onClick={toggleModal}>
+      <button
+        id="TokenExchangeButton"
+        className="btn btn-secondary drop-shadow-button"
+        onClick={toggleModal}
+      >
         TOKEN EXCHANGE&nbsp;
         <FontAwesomeIcon icon={faExchangeAlt} className="ml-1" />
       </button>
@@ -34,22 +38,24 @@ export const TokenExchange = () => {
       >
         <div className="flex flex-col items-center ">
           <div className="tabs">
-            <a
+            <button
+              id="BuyBNBTabButton"
               className={cn("tab tab-bordered font-aristotelica-bold text-xl", {
                 "tab-active": isBuy,
               })}
               onClick={() => setSelectedTab(TABS.buy)}
             >
               Buy BNB
-            </a>
-            <a
+            </button>
+            <button
+              id="ExchangeTabButton"
               className={cn("tab tab-bordered font-aristotelica-bold text-xl", {
                 "tab-active": isExchange,
               })}
               onClick={() => setSelectedTab(TABS.exchange)}
             >
               EXCHANGE
-            </a>
+            </button>
           </div>
           <div className="exchange-tabs-content mt-4">
             {isBuy && (<div className="h-full w-full relative"><Onramper /><div className="w-full h-full absolute top-0 z-999 bg-gray-200 bg-opacity-90 flex items-center justify-center text-2xl">Coming Soon</div></div>)}

@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { connect } from "redux-zero/react";
 import { get } from "lodash";
 import { useHistory } from "react-router-dom";
-import { Reveal } from "react-text-reveal";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinusCircle, faTimesCircle, faEye } from "@fortawesome/free-solid-svg-icons";
 import { SPEECHES, CHARACTERS } from "./constants";
 import { withSkipDialog } from "../../hoc/withSkipDialog";
 import { actions } from "../../store/redux";
+import { Reveal } from "../reveal/Reveal";
 
 import "./index.scss";
 
@@ -129,7 +129,7 @@ const CharacterWrapper = ({
   return (
     <div
       className={classNames(
-        "flex-1 min-h-full min-w-full md:flex items-center ",
+        "flex-1 min-h-full min-w-full md:flex items-center",
         { "z-30": showBubble },
         { "z-0": !showBubble }
       )}
@@ -140,7 +140,7 @@ const CharacterWrapper = ({
             ? "character-bubble fixed z-999 bottom-8 pointer-events-none w-screen"
             : "character-bubble hide-bubble fixed justify-end"
         }
-        style={{ zIndex: forceTop ? 9999 : speech ? undefined : 0 }}
+        style={{ zIndex: forceTop ? 999999 : (speech ? undefined : 0) }}
       >
         {speech && (
           <div className="text-bubble flex-col justify-end pointer-events-none">
@@ -148,12 +148,22 @@ const CharacterWrapper = ({
               <div className="name px-10">{character.name}</div>
               <div className="speech">
                 <div className="speech-text">
-                  <Reveal canPlay={canPlay} ease={"cubic-bezier(0,0.4,0.4,1)"} duration={500}>
+                  <Reveal
+                    canPlay={canPlay}
+                    ease={"cubic-bezier(0,0.4,0.4,1)"}
+                    duration={500}
+                    restrictReveal={restrictReveal}
+                  >
                     {stateSpeech ? stateSpeech : speech}
                   </Reveal>
                 </div>
               </div>
-              <Reveal canPlay={canPlay} ease={"cubic-bezier(0,0.4,0.4,1)"} duration={500}>
+              <Reveal
+                canPlay={canPlay}
+                ease={"cubic-bezier(0,0.4,0.4,1)"}
+                duration={500}
+                restrictReveal={restrictReveal}
+              >
                 <div className="buttons">
                   {button.text && (
                     <button
