@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
+import { usePearlNoiseGeometry } from "hooks/usePearlNoiseGeometry";
 
 export default function Model(props) {
   const group = useRef();
@@ -13,15 +14,21 @@ export default function Model(props) {
     emissive,
     emissiveIntensity,
     roughness,
-    onBeforeCompile,
     glowMaterial,
     backGlowMaterial,
+    surface,
   } = props;
+
+  const noiseGeometry = usePearlNoiseGeometry(nodes.Round, surface);
+
+  if (!noiseGeometry) {
+    return null;
+  }
 
   return (
     <group ref={group} position={[0, 0, 0]} rotation={[0, Math.PI, 0]}>
       <group ref={group} position={[0, 0, 0]} rotation={[0, Math.PI, 0]}>
-        <mesh castShadow receiveShadow geometry={nodes.Round.geometry}>
+        <mesh castShadow receiveShadow geometry={noiseGeometry}>
           <meshStandardMaterial
             {...materials.Pearls1}
             map={map}
@@ -32,7 +39,6 @@ export default function Model(props) {
             emissive={emissive}
             color={color}
             roughness={roughness}
-            onBeforeCompile={onBeforeCompile}
           />
         </mesh>
         {glowMaterial && (

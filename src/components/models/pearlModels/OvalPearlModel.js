@@ -1,5 +1,21 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useGLTF } from "@react-three/drei";
+import * as THREE from "three";
+import { ImprovedNoise } from "three/examples/jsm/math/ImprovedNoise";
+
+import { usePearlNoiseGeometry } from "../../../hooks/usePearlNoiseGeometry";
+
+/** Params for noise */
+const seed = 0;
+const noiseWidth = 0.015;
+const noiseHeight = 0.03;
+
+const getNoise = (vertice) =>
+  ImprovedNoise().noise(
+    seed + vertice.x / noiseWidth,
+    seed + vertice.y / noiseWidth,
+    seed + vertice.z / noiseWidth
+  );
 
 export default function Model(props) {
   const group = useRef();
@@ -13,14 +29,20 @@ export default function Model(props) {
     emissive,
     emissiveIntensity,
     roughness,
-    onBeforeCompile,
     glowMaterial,
     backGlowMaterial,
+    surface,
   } = props;
+
+  const noiseGeometry = usePearlNoiseGeometry(nodes.Oval, surface);
+
+  if (!noiseGeometry) {
+    return null;
+  }
 
   return (
     <group ref={group} {...props}>
-      <mesh geometry={nodes.Oval.geometry} material={materials.Pearl}>
+      <mesh geometry={noiseGeometry} material={materials.Pearl}>
         <meshStandardMaterial
           {...materials.Pearl}
           map={map}
@@ -31,7 +53,6 @@ export default function Model(props) {
           emissive={emissive}
           color={color}
           roughness={roughness}
-          onBeforeCompile={onBeforeCompile}
         />
       </mesh>
       {glowMaterial && (

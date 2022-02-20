@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import convert from "color-convert";
@@ -10,7 +10,6 @@ import DropPearlModel from "../models/pearlModels/DropPearlModel";
 import OvalPearlModel from "../models/pearlModels/OvalPearlModel";
 import RingedPearlModel from "../models/pearlModels/RingedPearlModel";
 import RoundPearlModel from "../models/pearlModels/RoundPearlModel";
-import { getOnBeforeCompile } from "../../shaders/noise-material";
 import { getGlowMaterial } from "../../shaders/glow";
 
 import {
@@ -49,8 +48,6 @@ export const Pearl = (props) => {
     envMap: `/pearl-models/patterns/${envMapFile}`,
     emissiveMap: `/pearl-models/patterns/${emissiveMapFile}`,
   });
-
-  const onBeforeCompile = useCallback(getOnBeforeCompile(surface), [surface]);
 
   const { camera } = useThree();
   camera.layers.enable(1);
@@ -103,7 +100,6 @@ export const Pearl = (props) => {
         map={map}
         envMap={envMap}
         emissiveMap={emissiveMap}
-        onBeforeCompile={onBeforeCompile}
         envMapIntensity={1.2}
         color={color}
         emissive={emissive}
@@ -111,6 +107,7 @@ export const Pearl = (props) => {
         roughness={roughness}
         glowMaterial={glowMaterial ? glowMaterial : undefined}
         backGlowMaterial={backGlowMaterial}
+        surface={surface}
       />
     </group>
   );
