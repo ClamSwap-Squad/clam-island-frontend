@@ -26,6 +26,7 @@ import { ISLAND_OBJECTS, ISLANDS_NAMES } from './constants';
 import LoadingScreen from "components/LoadingScreen";
 import { MapGuider } from "./mapGuider";
 import { GuidedTourButton } from "./mapGuider/GuidedTourButton";
+import { SeagullsAnimation } from "./BasAnimation";
 
 const clock = new THREE.Clock();
 
@@ -70,6 +71,15 @@ const Map3D = ({ isGuidedTourPassed, setIsGuidedTourPassed }) => {
   const zoomOut = () => {
     cameraControls.current.dolly( -200, true )
   };
+
+  const animateSeagulls = () => {
+    const seagullModel = modelObjs.current.find(({ type }) => type === "seagull");
+    const seagull = seagullModel.model.children[0].children[0].children[0].children[0].children[0];
+    const animation = new SeagullsAnimation(seagull);
+    animation.animate(8.0, {ease: Power0.easeIn, repeat:-1, repeatDelay:0, yoyo: false});
+    seagullModel.model.children[0].children[0].children[0].children[0].children[0] = animation.mesh;
+    scene.add( seagullModel.model);
+  }
 
   const create3DScene = async (element, setLoading) => {
     renderer = new THREE.WebGLRenderer({ antialias: true, logarithmicDepthBuffer: true });
@@ -137,6 +147,8 @@ const Map3D = ({ isGuidedTourPassed, setIsGuidedTourPassed }) => {
     renderer.domElement.addEventListener("click", onMouseClick);
 
     animate();
+
+    animateSeagulls();
   };
 
   const addLights = () => {
@@ -196,7 +208,6 @@ const Map3D = ({ isGuidedTourPassed, setIsGuidedTourPassed }) => {
       }
     });
 
-    flyingSeagulls(tDelta);
     swimmingDolphins(tDelta);
 
     composer.render();
@@ -207,15 +218,6 @@ const Map3D = ({ isGuidedTourPassed, setIsGuidedTourPassed }) => {
       const delta = Math.sin(factor + t);
       const newPos = delta * factor;
       obj.position.y = init + newPos;
-    }
-  };
-
-  const flyingSeagulls = (tDelta) => {
-    const seagulls = modelObjs.current.find(k => k.type === 'seagull').model;
-    if (seagulls) {
-      seagulls.forEach((seagull) => {
-        seagull.pivot.rotation.y += seagull.pivot.userData.speed + tDelta / 2;
-      });
     }
   };
 

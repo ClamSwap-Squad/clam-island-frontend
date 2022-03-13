@@ -53,6 +53,7 @@
     "sass": "^1.39.0",
     "styled-components": "^5.2.1",
     "three": "^0.126.1",
+    "three-bas": "^2.13.0",
     "use-wallet": "^0.12.3",
     "web-vitals": "^1.0.1",
     "web3": "^1.6.0",

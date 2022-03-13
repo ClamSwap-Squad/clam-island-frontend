@@ -17515,6 +17515,13 @@
   "resolved" "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz"
   "version" "0.2.0"
 
+"three-bas@^2.13.0":
+  "integrity" "sha512-980IbfO/dC+q+0QqUVsvoAgJJOcNjuSheZcTSv0hfOCV8xphQlW+y5rfOzP5zKKzsvVuK+OdPrBfg/5V8l+A3A=="
+  "resolved" "https://registry.npmjs.org/three-bas/-/three-bas-2.13.0.tgz"
+  "version" "2.13.0"
+  dependencies:
+    "three" "*"
+
 "three-mesh-bvh@^0.4.1":
   "integrity" "sha512-dApttQDxi8aFaRqRJt6JQ+UYUQpIwZ4Zu4VhoVv9GugTaT0gFcPeo7ud9dzmq6HsLGX8p2i7VrO/zLu7mQ4VDQ=="
   "resolved" "https://registry.npmjs.org/three-mesh-bvh/-/three-mesh-bvh-0.4.2.tgz"
@@ -17536,7 +17543,7 @@
     "potpack" "^1.0.1"
     "zstddec" "^0.0.2"
 
-"three@^0.109.0", "three@^0.126.1", "three@>= 0.123.0", "three@>=0.103.0", "three@>=0.109", "three@>=0.126", "three@>=0.126.1", "three@>=0.128.0":
+"three@*", "three@^0.109.0", "three@^0.126.1", "three@>= 0.123.0", "three@>=0.103.0", "three@>=0.109", "three@>=0.126", "three@>=0.126.1", "three@>=0.128.0":
   "integrity" "sha512-eOEXnZeE1FDV0XgL1u08auIP13jxdN9LQBAEmlErYzMxtIIfuGIAZbijOyookALUhqVzVOx0Tywj6n192VM+nQ=="
   "resolved" "https://registry.npmjs.org/three/-/three-0.126.1.tgz"
   "version" "0.126.1"

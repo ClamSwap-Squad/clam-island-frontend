@@ -80,40 +80,6 @@ const loadGLTF = async (url, scene, type = "island", name, callback = () => {}) 
     gltf.scene.position.x = 0; //Position (x = right+ left-)
     gltf.scene.position.y = 200; //Position (y = up+, down-)
     gltf.scene.position.z = 0;
-
-    const seagulls = [];
-    for (let i = 1; i < 5; i++) {
-      const clone = gltf.scene.clone();
-
-      if (clone) {
-        clone.scale.set(1, 1, 1);
-        clone.rotation.y = 6.2;
-        clone.rotation.x = 3.1;
-        clone.rotation.z = 2.8;
-
-        const zpos = i === 1 ? -100 : i === 2 ? 200 : i === 3 ? -300 : 0;
-
-        const xpos = i === 1 ? 0 : i === 2 ? -50 : i === 3 ? 200 : 300;
-
-        clone.position.z = 0;
-        clone.position.x = 100;
-        clone.position.y = 0;
-
-        const pivot = new THREE.Object3D();
-        pivot.position.z = zpos;
-        pivot.position.x = xpos;
-        pivot.position.y = 200 + Math.random() * 100;
-        pivot.userData.speed = Math.random() * 0.01;
-
-        scene.add(pivot);
-        pivot.add(clone);
-        seagulls.push({
-          obj: clone,
-          pivot,
-        });
-      }
-    }
-    return seagulls;
   } else if (type === "dolphin") {
     gltf.scene.scale.set(10, 10, 10);
     gltf.scene.position.x = 0;
